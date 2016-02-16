@@ -1,25 +1,20 @@
 {
   "name": "project-hub",
   "version": "1.0.0",
-  "description": "Project Hub ================",
+  "description": "'Diag Project' - Project Hub ================",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bradfrost/project-hub.git"
+    "start": "serve public -p $PORT"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bradfrost/project-hub/issues"
-  },
-  "homepage": "https://github.com/bradfrost/project-hub#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "vinyl-ftp": "^0.4.5"
+  },
+  "dependencies": {
+    "serve": "^1.4.0"
   }
 }

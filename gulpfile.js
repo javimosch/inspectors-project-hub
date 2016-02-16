@@ -1,7 +1,7 @@
 var rename = require("gulp-rename");
 var gulp = require('gulp');
 var ftp = require('vinyl-ftp');
-
+var fs = require("fs");
 
 var ftpConfig = {
     exclude: ['dist', 'express/admin', 'dist/admin'],
