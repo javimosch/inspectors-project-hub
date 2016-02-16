@@ -4,8 +4,9 @@ var ftp = require('vinyl-ftp');
 var fs = require("fs");
 
 var ftpConfig = {
-    exclude: ['dist', 'express/admin', 'dist/admin'],
-    src: ['dist/**/*.*'],
+    exclude: [],
+    rename: ['public', 'hub'],
+    src: ['public/**/*.*'],
     dest: '',
     auth: {
         host: 'misitioba.com',
@@ -21,8 +22,8 @@ ftpConfig.auth.password = data.password;
 
 console.log('Using ' + JSON.stringify({ user: ftpConfig.auth.user, pass: ftpConfig.auth.password }));
 
-gulp.task('default',function(){
-	console.log('success');
+gulp.task('default', function() {
+    console.log('success');
 });
 
 gulp.task('deploy', function() {
@@ -38,6 +39,10 @@ gulp.task('deploy', function() {
                 path.dirname = path.dirname.toString().replace(v, "");
                 path.dirname = path.dirname.replace('//', '/');
             });
+            if (ftpConfig.rename) {
+                var v = ftpConfig.rename;
+                path.dirname = path.dirname.replace(v[0], v[1]);
+            }
             return path;
         }))
         .pipe(conn.newer('/' + ftpConfig.dest)) // only upload newer files
